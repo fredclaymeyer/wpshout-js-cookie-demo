@@ -41,7 +41,8 @@ add_shortcode( 'js_cookie_form', 'wpjcd_show_cookie_form' );
 function wpjcd_show_cookie_form() {
 	ob_start(); ?>
 		<div class="favorite-food-form">
-			<label for="name">Fave Food:<label><br><input type="text" class="favorite-food-input" placeholder="Cookies"><p><button class="favorite-food-submit">Submit</button></p>
-		</label></label></div>
+			<label for="name">Fave Food:</label><br>
+			<input type="text" class="favorite-food-input" placeholder="Cookies"><p><button class="favorite-food-submit">Submit</button></p>
+		</div>
 	<?php return ob_get_clean();
 }

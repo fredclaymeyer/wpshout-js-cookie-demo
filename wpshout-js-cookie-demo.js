@@ -9,11 +9,13 @@
 
 		$( '.current-favorite' ).html( fave );
 
+		/* Return if no cookies */
 		if( ! cookie.enabled() ) {
 			$( '.favorite-food-form' ).html( "Your system doesn't accept cookies! :|" );
 			return;
 		} 
 
+		/* Ajax request to get current cookie despite caching */
 		$.post(
 			ajaxUrl.url, 
 			{
@@ -31,6 +33,7 @@
 			}
 		);
 
+		/* Track form changes */
 		$( '.favorite-food-input' ).on( "input", function() {
 			faveTyped =  $( this ).val();
 			if( faveTyped != '' ) {
@@ -40,6 +43,7 @@
 			}
 		});
 
+		/* Update favorite food through form */
 		$( '.favorite-food-submit' ).click(function() {
 			cookie.remove( cookieName );
 
@@ -55,4 +59,3 @@
 
 
 }(jQuery));
-
