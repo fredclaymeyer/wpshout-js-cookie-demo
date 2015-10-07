@@ -1,5 +1,10 @@
 (function ($) {
 
+	// Escaping input, thanks http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+	function escapeRegExp( str ) {
+		return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+	}
+
 	$(document).ready(function() {
 		var faveText = "Your current favorite food is ";
 		var noFaveText = "You haven't yet told us your favorite food!";
@@ -47,7 +52,9 @@
 		$( '.favorite-food-submit' ).click(function() {
 			cookie.remove( cookieName );
 
-			cookie.set( cookieName, faveTyped, {
+			var sanitized = escapeRegExp( faveTyped );
+
+			cookie.set( cookieName, sanitized, {
 			   expires: 999, // Expires in 999 days
 			   path: '/',
 			});

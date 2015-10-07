@@ -24,7 +24,7 @@ add_action( 'wp_ajax_wpshout_get_fave_food_cookie', 'wpshout_get_fave_food_cooki
 add_action( 'wp_ajax_nopriv_wpshout_get_fave_food_cookie', 'wpshout_get_fave_food_cookie' );
 function wpshout_get_fave_food_cookie() {
 	$cookie = $_POST['cookie'];
-	echo esc_attr( $_COOKIE[ $cookie ] );
+	echo sanitize_text_field( $_COOKIE[ $cookie ] );
 	die;
 }
 
